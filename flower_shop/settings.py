@@ -76,12 +76,8 @@ WSGI_APPLICATION = 'flower_shop.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'flower_shop_db',  # Название вашей БД
-        'USER': 'root',            # Имя пользователя MySQL
-        'PASSWORD': 'password',  # Пароль MySQL (например, 'password')
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',  # Файл БД будет создан автоматически
     }
 }
 
