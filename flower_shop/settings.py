@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-5isaepl)so2#0ty#8_dd9hdu*euvl#!l^g+@%d$_1$%e567_2w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'flower-shop-yurh.onrender.com',  # Добавьте ваш домен
+    'localhost',                      # Для локального тестирования
+    '127.0.0.1',
+]
 
 
 # Application definition
