@@ -1,0 +1,10 @@
+{% extends "base_generic.html" %}
+{% block content %}
+  <h1>Создать обращение</h1>
+  <form method="post">
+    {% csrf_token %}
+    <label>Тема: <input type="text" name="subject" required></label><br>
+    <label>Сообщение: <textarea name="message" rows="4" required></textarea></label><br>
+    <button type="submit">Отправить</button>
+  </form>
+{% endblock %}

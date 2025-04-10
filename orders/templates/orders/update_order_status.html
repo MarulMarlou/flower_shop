@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+{% block content %}
+  <h1>Изменить статус заказа {{ order.id }}</h1>
+  <form method="post">
+    {% csrf_token %}
+    <label>Новый статус: 
+      <select name="status">
+        <option value="received" {% if order.status == 'received' %}selected{% endif %}>
+          Принят
+        </option>
+        <option value="in_progress" {% if order.status == 'in_progress' %}selected{% endif %}>
+          В работе
+        </option>
+        <option value="delivered" {% if order.status == 'delivered' %}selected{% endif %}>
+          Доставлен
+        </option>
+      </select>
+    </label><br>
+    <button type="submit">Сохранить</button>
+  </form>
+{% endblock %}

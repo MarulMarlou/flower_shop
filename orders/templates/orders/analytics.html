@@ -1,0 +1,45 @@
+{% extends "base_generic.html" %}
+{% block content %}
+  <h1>Аналитика</h1>
+  <div class="container">
+    <h1 class="mb-4">Аналитика</h1>
+
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="card-title">Популярные цветы</h5>
+        <div class="list-group">
+          {% for flower in popular_flowers %}
+            <div class="list-group-item">
+              <strong>{{ flower.name }}</strong> — продано: {{ flower.order_count }} шт.
+            </div>
+          {% empty %}
+            <div class="list-group-item">Нет данных.</div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+<img src="data:image/png;base64,{{ image_base64 }}">
+  <h2>Заказы по месяцам</h2>
+  <ul>
+    {% for item in orders_by_month %}
+      <li>Месяц {{ item.month }}: {{ item.total }} заказов</li>
+    {% empty %}
+      <li>Нет данных.</li>
+    {% endfor %}
+  </ul>
+<h2>Сегментация клиентов</h2>
+<table>
+  <tr>
+    <th>Сегмент</th>
+    <th>Количество клиентов</th>
+  </tr>
+  {% for segment in segments %}
+    <tr>
+      <td>{{ segment.segment }}</td>
+      <td>{{ segment.count }}</td>
+    </tr>
+  {% empty %}
+    <tr><td colspan="2">Нет данных.</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

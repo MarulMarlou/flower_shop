@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+{% block content %}
+  <h1>Обновить статус заказа</h1>
+  <form method="post">
+    {% csrf_token %}
+    <label>Статус: 
+      <select name="status">
+        <option value="received">Принят</option>
+        <option value="in_progress">В работе</option>
+        <option value="delivered">Доставлен</option>
+      </select>
+    </label><br>
+    <button type="submit">Обновить</button>
+  </form>
+{% endblock %}

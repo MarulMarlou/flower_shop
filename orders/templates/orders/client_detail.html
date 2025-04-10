@@ -1,0 +1,27 @@
+{% extends "base_generic.html" %}
+{% block content %}
+  <h1>История покупок {{ client }}</h1>
+  <table>
+    <tr>
+      <th>ID заказа</th>
+      <th>Статус</th>
+      <th>Дата</th>
+      <th>Цветы</th>
+    </tr>
+    {% for order in orders %}
+      <tr>
+        <td>{{ order.id }}</td>
+        <td>{{ order.status }}</td>
+        <td>{{ order.created_at }}</td>
+        <td>
+          {% for item in order.orderitem_set.all %}
+            {{ item.flower.name }} × {{ item.quantity }}<br>
+          {% endfor %}
+        </td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="4">Нет заказов.</td></tr>
+    {% endfor %}
+  </table>
+  <a href="{% url 'client_list' %}">Назад</a>
+{% endblock %}

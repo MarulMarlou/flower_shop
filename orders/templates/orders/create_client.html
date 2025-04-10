@@ -1,0 +1,34 @@
+{% extends "base_generic.html" %}
+{% block content %}
+  <div class="container mt-5">
+    <h1 class="mb-4">Добавить клиента</h1>
+    <form method="post" class="border p-4 rounded bg-light">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label class="form-label">Имя:</label>
+        <input type="text" name="first_name" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Фамилия:</label>
+        <input type="text" name="last_name" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Эл. почта:</label>
+        <input type="email" name="email" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Телефон:</label>
+        <input type="tel" name="phone" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Сегмент:</label>
+        <select name="segment" class="form-select" required>
+          <option value="regular">Постоянный клиент</option>
+          <option value="one_time">Одноразовый</option>
+          <option value="corporate">Корпоративный</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+  </div>
+{% endblock %}

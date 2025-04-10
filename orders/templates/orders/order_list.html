@@ -1,0 +1,43 @@
+{% extends "base_generic.html" %}
+{% block content %}
+  <div class="container">
+    <h1 class="mb-4">Список заказов</h1>
+    <div class="card">
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Клиент</th>
+              <th>Статус</th>
+              <th>Дата создания</th>
+              <th>Действия</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for order in order_list %}
+              <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.client }}</td>
+                <td>{{ order.status }}</td>
+                <td>{{ order.created_at }}</td>
+                <td>
+                  <a href="{% url 'update_order_status' order.id %}" class="btn btn-primary btn-sm">
+                    <i class="fas fa-edit"></i> Изменить статус
+                  </a>
+                  {% if order.status != 'delivered' %}
+                    <a href="{% url 'confirm_delivery' order.id %}" class="btn btn-success btn-sm">
+                      <i class="fas fa-truck"></i> Подтвердить доставку
+                    </a>
+                  {% endif %}
+                </td>
+              </tr>
+            {% empty %}
+              <tr><td colspan="5">Нет заказов.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{% endblock %}
